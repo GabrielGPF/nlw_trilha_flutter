@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_trilha_flutter/components/molecules/molecule_quiz_answer.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
+import 'package:nlw_trilha_flutter/models/model_question.dart';
 
-class Quiz extends StatelessWidget {
-  final String title;
+class QuizQuestion extends StatelessWidget {
+  final QuestionModel question;
 
-  Quiz({
-    required this.title,
+  QuizQuestion({
+    required this.question,
   });
 
   @override
@@ -15,29 +16,15 @@ class Quiz extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          title,
+          question.title,
           style: AppTextStyles.heading,
         ),
         SizedBox(height: 24),
-        QuizAnswer(
-          isRight: true,
-          isSelected: true,
-          title: "Possibilita a criação de aplicativos compilados nativamente.",
-        ),
-        QuizAnswer(
-          isRight: false,
-          isSelected: true,
-          title: "Possibilita a criação de aplicativos compilados nativamente.",
-        ),
-        QuizAnswer(
-          isRight: true,
-          isSelected: false,
-          title: "Possibilita a criação de aplicativos compilados nativamente.",
-        ),
-        QuizAnswer(
-          isRight: false,
-          isSelected: false,
-          title: "Possibilita a criação de aplicativos compilados nativamente.",
+        ...question.answers.map(
+          (e) => QuizAnswer(
+            title: e.title,
+            isRight: e.isRight,
+          ),
         ),
       ],
     );
