@@ -44,7 +44,7 @@ class QuizCard extends StatelessWidget {
               SizedBox(width: 24),
               Expanded(
                 flex: 2,
-                child: ProgressIndicatorWidget(),
+                child: ProgressIndicatorWidget(value: 0.3),
               ),
             ],
           ),
