@@ -1,10 +1,10 @@
 class AppImages {
-  static String get hierarchy => "lib/assets/images/hierarchy.png";
-  static String get data => "lib/assets/images/data.png";
-  static String get laptop => "lib/assets/images/laptop.png";
-  static String get blocks => "lib/assets/images/blocks.png";
-  static String get check => "lib/assets/images/check.png";
-  static String get error => "lib/assets/images/error.png";
-  static String get trophy => "lib/assets/images/trophy.png";
-  static String get logo => "lib/assets/images/logo.png";
+  static String get hierarchy => "assets/images/hierarchy.png";
+  static String get data => "assets/images/data.png";
+  static String get laptop => "assets/images/laptop.png";
+  static String get blocks => "assets/images/blocks.png";
+  static String get check => "assets/images/check.png";
+  static String get error => "assets/images/error.png";
+  static String get trophy => "assets/images/trophy.png";
+  static String get logo => "assets/images/logo.png";
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:nlw_trilha_flutter/models/model_question.dart';
 
 enum Level {
@@ -5,6 +7,24 @@ enum Level {
   medio,
   dificil,
   perito,
+}
+
+extension LevelStringExt on String {
+  Level get parse => {
+        "facil": Level.facil,
+        "medio": Level.medio,
+        "dificil": Level.dificil,
+        "perito": Level.perito,
+      }[this]!;
+}
+
+extension LevelExt on Level {
+  String get parse => {
+        Level.facil: "facil",
+        Level.medio: "medio",
+        Level.dificil: "dificil",
+        Level.perito: "perito",
+      }[this]!;
 }
 
 class QuizModel {
@@ -21,4 +41,44 @@ class QuizModel {
     required this.image,
     required this.level,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'questions': questions.map((x) => x.toMap()).toList(),
+      'questionsAnswered': questionsAnswered,
+      'image': image,
+      'level': level.parse,
+    };
+  }
+
+  factory QuizModel.fromMap(Map<String, dynamic> map) {
+    // try{
+    //   final quiz = QuizModel(
+    //   title: map['title'],
+    //   questions: List<QuestionModel>.from(
+    //       map['questions'].map((x) => QuestionModel.fromMap(x))),
+    //   questionsAnswered: map['questionsAnswered'],
+    //   image: map['image'],
+    //   level: map['level'].toString().parse,
+    // );
+    // print("QUIZ: $quiz");
+    // } catch (e){
+    //   print("${e.toString()}");
+    // }
+
+    return QuizModel(
+      title: map['title'],
+      questions: List<QuestionModel>.from(
+          map['questions'].map((x) => QuestionModel.fromMap(x))),
+      questionsAnswered: map['questionsAnswered'] ?? 0,
+      image: map['image'],
+      level: map['level'].toString().parse,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory QuizModel.fromJson(String source) =>
+      QuizModel.fromMap(json.decode(source));
 }

@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     controller.getUser();
     controller.getQuizzes();
-    controller.stateNotifier.addListener(() {
-      setState(() {});
-    });
+    controller.stateNotifier.addListener(() => setState(() {}));
+    controller.userNotifier.addListener(() => setState(() {}));
+    controller.quizzesNotifier.addListener(() => setState(() {}));
   }
 
   @override
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     if (controller.state == HomeState.success) {
       return Scaffold(
         appBar: HomeAppBar(
-          user: controller.user!,
+          user: controller.user,
         ),
         body: Container(
           child: Padding(
@@ -63,16 +63,21 @@ class _HomePageState extends State<HomePage> {
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                     crossAxisCount: 2,
-                    children: controller.quizzes!
-                        .map(
-                          (e) => QuizCard(
-                            title: e.title,
-                            completed:
-                                "${e.questionsAnswered}/${e.questions.length}",
-                            percent: e.questionsAnswered / e.questions.length,
-                          ),
-                        )
-                        .toList(),
+                    children: controller.quizzes.map(
+                      (e) {
+                        print("TITLE: ${e.title}");
+                        print("questionsAnswered: ${e.questionsAnswered}");
+                        print("questions: ${e.questions}");
+                        print("image: ${e.image}");
+                        print("level: ${e.level}");
+                        return QuizCard(
+                          title: e.title,
+                          completed:
+                              "${e.questionsAnswered}/${e.questions.length}",
+                          percent: e.questionsAnswered / e.questions.length,
+                        );
+                      },
+                    ).toList(),
                   ),
                 ),
               ],

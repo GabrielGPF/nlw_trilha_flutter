@@ -19,7 +19,7 @@ dev_dependencies:
 
 flutter:
   assets:
-    - lib/assets/images/
-    - lib/database/
+    - assets/images/
+    - assets/database/
 
   uses-material-design: true
