@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_trilha_flutter/components/atoms/atom_difficulty_tag.dart';
+import 'package:nlw_trilha_flutter/components/molecules/molecule_quiz_card.dart';
 import 'package:nlw_trilha_flutter/components/organisms/organism_home_app_bar.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,11 +14,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: HomeAppBar(),
       body: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            children: [
+              SizedBox(height: 24.0),
+              SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,8 +40,21 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 24.0),
+              Expanded(
+                child: GridView.count(
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  crossAxisCount: 2,
+                  children: [
+                    QuizCard(),
+                    QuizCard(),
+                    QuizCard(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
