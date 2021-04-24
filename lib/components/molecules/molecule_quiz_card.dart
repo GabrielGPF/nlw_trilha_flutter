@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlw_trilha_flutter/components/atoms/atom_progress_indicator.dart';
 import 'package:nlw_trilha_flutter/core/app_colors.dart';
 import 'package:nlw_trilha_flutter/core/app_images.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
@@ -43,12 +44,7 @@ class QuizCard extends StatelessWidget {
               SizedBox(width: 24),
               Expanded(
                 flex: 2,
-                child: LinearProgressIndicator(
-                  value: 0.3,
-                  backgroundColor: AppColors.chartSecondary,
-                  valueColor:
-                      AlwaysStoppedAnimation<Color>(AppColors.chartPrimary),
-                ),
+                child: ProgressIndicatorWidget(),
               ),
             ],
           ),
