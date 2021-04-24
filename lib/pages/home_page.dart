@@ -4,6 +4,7 @@ import 'package:nlw_trilha_flutter/components/molecules/molecule_quiz_card.dart'
 import 'package:nlw_trilha_flutter/components/organisms/organism_home_app_bar.dart';
 import 'package:nlw_trilha_flutter/controllers/controller_home.dart';
 import 'package:nlw_trilha_flutter/core/app_colors.dart';
+import 'package:nlw_trilha_flutter/pages/challenge_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -70,6 +71,13 @@ class _HomePageState extends State<HomePage> {
                           completed:
                               "${e.questionsAnswered}/${e.questions.length}",
                           percent: e.questionsAnswered / e.questions.length,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChallengePage()),
+                            );
+                          },
                         );
                       },
                     ).toList(),
