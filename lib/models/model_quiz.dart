@@ -53,20 +53,6 @@ class QuizModel {
   }
 
   factory QuizModel.fromMap(Map<String, dynamic> map) {
-    // try{
-    //   final quiz = QuizModel(
-    //   title: map['title'],
-    //   questions: List<QuestionModel>.from(
-    //       map['questions'].map((x) => QuestionModel.fromMap(x))),
-    //   questionsAnswered: map['questionsAnswered'],
-    //   image: map['image'],
-    //   level: map['level'].toString().parse,
-    // );
-    // print("QUIZ: $quiz");
-    // } catch (e){
-    //   print("${e.toString()}");
-    // }
-
     return QuizModel(
       title: map['title'],
       questions: List<QuestionModel>.from(
