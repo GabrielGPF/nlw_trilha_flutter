@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_trilha_flutter/components/molecules/molecule_question_indicator.dart';
+import 'package:nlw_trilha_flutter/components/organisms/organism_quiz.dart';
 
 class ChallengePage extends StatefulWidget {
   @override
@@ -17,7 +18,12 @@ class _ChallengePageState extends State<ChallengePage> {
           child: QuestionIndicator(),
         ),
       ),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Quiz(
+          title: "O que o Flutter faz em sua totalidade?",
+        ),
+      ),
     );
   }
 }
