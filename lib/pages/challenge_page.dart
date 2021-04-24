@@ -29,22 +29,28 @@ class _ChallengePageState extends State<ChallengePage> {
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Expanded(
-                child: NextButton.white(
-                  label: "Fácil",
-                  onTap: () {},
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: NextButton.white(
+                      label: "Fácil",
+                      onTap: () {},
+                    ),
+                  ),
+                  SizedBox(width: 7),
+                  Expanded(
+                    child: NextButton.green(
+                      label: "Confirmar",
+                      onTap: () {},
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(width: 7),
-              Expanded(
-                child: NextButton.green(
-                  label: "Confirmar",
-                  onTap: () {},
-                ),
-              ),
+              SizedBox(height: 16),
             ],
           ),
         ),

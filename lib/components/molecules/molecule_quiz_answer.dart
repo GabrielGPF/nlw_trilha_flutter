@@ -59,7 +59,7 @@ class QuizAnswer extends StatelessWidget {
               height: 24,
               width: 24,
               decoration: BoxDecoration(
-                color: isSelected ? _selectedColorRight : AppColors.darkGreen,
+                color: isSelected ? _selectedColorRight : AppColors.white,
                 shape: BoxShape.circle,
                 border: Border.fromBorderSide(
                   BorderSide(
