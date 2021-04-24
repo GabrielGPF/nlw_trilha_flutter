@@ -36,42 +36,11 @@ class HomeController {
     state = HomeState.loading;
     user = await repository.getUser();
     state = HomeState.success;
-
-    // state = HomeState.loading;
-    // await Future.delayed(Duration(seconds: 2));
-    // user = UserModel(
-    //   name: "Gabriel Dev",
-    //   photoUrl:
-    //       "https://cdn11.bigcommerce.com/s-5ylnei6or5/images/stencil/1280x1280/products/1603/2662/2493_ScoobyDoo_MysteryIncorp_28__55588.1513992629.jpg?c=2",
-    // );
-    // state = HomeState.success;
   }
 
   void getQuizzes() async {
     state = HomeState.loading;
     quizzes = [...(await repository.getQuizzes())];
     state = HomeState.success;
-
-    // state = HomeState.loading;
-    // await Future.delayed(Duration(seconds: 2));
-    // quizzes = [
-    //   QuizModel(
-    //     title: "NLW 5 Flutter",
-    //     image: AppImages.blocks,
-    //     level: Level.facil,
-    //     questions: [
-    //       QuestionModel(
-    //         title: "Está curtindo o Flutter?",
-    //         answers: [
-    //           AnswerModel(title: "Estou curtindo"),
-    //           AnswerModel(title: "Estou amando"),
-    //           AnswerModel(title: "Muito top"),
-    //           AnswerModel(title: "Show de bola", isRight: true),
-    //         ],
-    //       ),
-    //     ],
-    //   ),
-    // ];
-    // state = HomeState.success;
   }
 }

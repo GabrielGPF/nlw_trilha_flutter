@@ -65,11 +65,6 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 2,
                     children: controller.quizzes.map(
                       (e) {
-                        print("TITLE: ${e.title}");
-                        print("questionsAnswered: ${e.questionsAnswered}");
-                        print("questions: ${e.questions}");
-                        print("image: ${e.image}");
-                        print("level: ${e.level}");
                         return QuizCard(
                           title: e.title,
                           completed:

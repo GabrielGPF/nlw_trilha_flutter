@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nlw_trilha_flutter/components/atoms/atom_next_button.dart';
 import 'package:nlw_trilha_flutter/components/molecules/molecule_question_indicator.dart';
 import 'package:nlw_trilha_flutter/components/organisms/organism_quiz.dart';
 
@@ -22,6 +23,30 @@ class _ChallengePageState extends State<ChallengePage> {
         padding: const EdgeInsets.all(24.0),
         child: Quiz(
           title: "O que o Flutter faz em sua totalidade?",
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        bottom: true,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: NextButton.white(
+                  label: "Fácil",
+                  onTap: () {},
+                ),
+              ),
+              SizedBox(width: 7),
+              Expanded(
+                child: NextButton.green(
+                  label: "Confirmar",
+                  onTap: () {},
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
