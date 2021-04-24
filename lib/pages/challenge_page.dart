@@ -17,6 +17,15 @@ class _ChallengePageState extends State<ChallengePage> {
   final controller = new ChallengeController();
   final pageController = new PageController();
 
+  void nextPage() {
+    if (controller.currentPage < widget.questions.length) {
+      pageController.nextPage(
+        duration: Duration(milliseconds: 100),
+        curve: Curves.linear,
+      );
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -58,7 +67,10 @@ class _ChallengePageState extends State<ChallengePage> {
             controller: pageController,
             children: widget.questions
                 .map(
-                  (e) => QuizQuestion(question: e),
+                  (e) => QuizQuestion(
+                    question: e,
+                    onChange: nextPage,
+                  ),
                 )
                 .toList(),
           ),
@@ -74,28 +86,30 @@ class _ChallengePageState extends State<ChallengePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                    child: NextButton.white(
-                      label: "Pular",
-                      onTap: () {
-                        pageController.nextPage(
-                          duration: Duration(milliseconds: 100),
-                          curve: Curves.linear,
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 7),
-                  Expanded(
-                    child: NextButton.green(
-                      label: "Confirmar",
-                      onTap: () {},
-                    ),
-                  ),
-                ],
+              ValueListenableBuilder(
+                valueListenable: controller.currentPageNotifier,
+                builder: (context, value, _) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      if ((value as int) < widget.questions.length)
+                        Expanded(
+                          child: NextButton.white(
+                            label: "Pular",
+                            onTap: nextPage,
+                          ),
+                        ),
+                      if (value == widget.questions.length) SizedBox(width: 7),
+                      if (value == widget.questions.length)
+                        Expanded(
+                          child: NextButton.green(
+                            label: "Confirmar",
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ),
+                    ],
+                  );
+                },
               ),
               SizedBox(height: 16),
             ],
