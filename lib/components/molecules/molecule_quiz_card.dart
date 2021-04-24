@@ -5,6 +5,16 @@ import 'package:nlw_trilha_flutter/core/app_images.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
 
 class QuizCard extends StatelessWidget {
+  final String title;
+  final String completed;
+  final double percent;
+
+  QuizCard({
+    required this.title,
+    required this.completed,
+    required this.percent,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +40,7 @@ class QuizCard extends StatelessWidget {
           // SizedBox(height: 16),
           Spacer(),
           Text(
-            "Gerenciamento de Estado",
+            title,
             style: AppTextStyles.heading15,
           ),
           // SizedBox(height: 12),
@@ -38,13 +48,13 @@ class QuizCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                "3 de 10",
+                completed,
                 style: AppTextStyles.body11,
               ),
               SizedBox(width: 24),
               Expanded(
                 flex: 2,
-                child: ProgressIndicatorWidget(value: 0.3),
+                child: ProgressIndicatorWidget(value: percent),
               ),
             ],
           ),
