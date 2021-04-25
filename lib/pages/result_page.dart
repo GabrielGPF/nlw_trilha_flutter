@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nlw_trilha_flutter/components/atoms/atom_next_button.dart';
 import 'package:nlw_trilha_flutter/core/app_images.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ResultPage extends StatelessWidget {
   final String title;
@@ -53,7 +54,14 @@ class ResultPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  NextButton.purple(label: "Compartilhar", onTap: () {}),
+                  NextButton.purple(
+                    label: "Compartilhar",
+                    onTap: () {
+                      Share.share(
+                        "Quiz - Resultado do Quiz: $title\n${result / length * 100}% de aproveitamento.",
+                      );
+                    },
+                  ),
                   SizedBox(height: 24),
                   NextButton.transparent(
                     label: "Voltar ao início",
