@@ -4,6 +4,7 @@ import 'package:nlw_trilha_flutter/components/molecules/molecule_question_indica
 import 'package:nlw_trilha_flutter/components/organisms/organism_quiz.dart';
 import 'package:nlw_trilha_flutter/controllers/controller_challenge.dart';
 import 'package:nlw_trilha_flutter/models/model_question.dart';
+import 'package:nlw_trilha_flutter/pages/result_page.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
@@ -104,7 +105,12 @@ class _ChallengePageState extends State<ChallengePage> {
                         Expanded(
                           child: NextButton.green(
                             label: "Confirmar",
-                            onTap: () => Navigator.pop(context),
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ResultPage(),
+                              ),
+                            ),
                           ),
                         ),
                     ],
