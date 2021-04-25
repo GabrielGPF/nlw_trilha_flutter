@@ -50,7 +50,9 @@ class HomeAppBar extends PreferredSize {
                 ),
                 Align(
                   alignment: Alignment(0.0, 1.0),
-                  child: ScoreCard(),
+                  child: ScoreCard(
+                    percent: user.score / 100,
+                  ),
                 ),
               ],
             ),

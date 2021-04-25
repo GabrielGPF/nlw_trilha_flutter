@@ -4,6 +4,12 @@ import 'package:nlw_trilha_flutter/core/app_colors.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
 
 class ScoreCard extends StatelessWidget {
+  final double percent;
+
+  ScoreCard({
+    required this.percent,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,7 +27,9 @@ class ScoreCard extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: Chart(),
+                child: Chart(
+                  percent: percent,
+                ),
               ),
               Expanded(
                 flex: 4,
