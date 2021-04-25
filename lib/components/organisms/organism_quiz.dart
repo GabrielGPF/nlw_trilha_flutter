@@ -6,11 +6,11 @@ import 'package:nlw_trilha_flutter/models/model_question.dart';
 
 class QuizQuestion extends StatefulWidget {
   final QuestionModel question;
-  final VoidCallback onChange;
+  final ValueChanged<bool> onSelected;
 
   QuizQuestion({
     required this.question,
-    required this.onChange,
+    required this.onSelected,
   });
 
   @override
@@ -37,12 +37,12 @@ class _QuizQuestionState extends State<QuizQuestion> {
             answer: answers(i),
             isSelected: selectedIndex == i,
             disabled: selectedIndex != -1,
-            onTap: () {
+            onTap: (bool isRight) {
               setState(() {
                 selectedIndex = i;
               });
-              Future.delayed(Duration(seconds: 3)).then(
-                (value) => widget.onChange(),
+              Future.delayed(Duration(seconds: 1)).then(
+                (_) => widget.onSelected(isRight),
               );
             },
           ),

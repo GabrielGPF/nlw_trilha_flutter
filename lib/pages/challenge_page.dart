@@ -8,7 +8,12 @@ import 'package:nlw_trilha_flutter/pages/result_page.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
-  ChallengePage({required this.questions});
+  final String title;
+
+  ChallengePage({
+    required this.questions,
+    required this.title,
+  });
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -25,6 +30,14 @@ class _ChallengePageState extends State<ChallengePage> {
         curve: Curves.linear,
       );
     }
+  }
+
+  void onSelected(bool isRight) {
+    if (isRight) {
+      controller.rightAnswersQuantity++;
+    }
+
+    nextPage();
   }
 
   @override
@@ -70,14 +83,11 @@ class _ChallengePageState extends State<ChallengePage> {
                 .map(
                   (e) => QuizQuestion(
                     question: e,
-                    onChange: nextPage,
+                    onSelected: onSelected,
                   ),
                 )
                 .toList(),
           ),
-          // QuizQuestion(
-          //   question: widget.questions[0],
-          // ),
         ),
       ),
       bottomNavigationBar: SafeArea(
@@ -105,10 +115,14 @@ class _ChallengePageState extends State<ChallengePage> {
                         Expanded(
                           child: NextButton.green(
                             label: "Confirmar",
-                            onTap: () => Navigator.push(
+                            onTap: () => Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => ResultPage(),
+                                builder: (context) => ResultPage(
+                                  result: controller.rightAnswersQuantity,
+                                  title: widget.title,
+                                  length: widget.questions.length,
+                                ),
                               ),
                             ),
                           ),

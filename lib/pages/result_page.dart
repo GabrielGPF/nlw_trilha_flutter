@@ -4,6 +4,16 @@ import 'package:nlw_trilha_flutter/core/app_images.dart';
 import 'package:nlw_trilha_flutter/core/app_text_styles.dart';
 
 class ResultPage extends StatelessWidget {
+  final String title;
+  final int length;
+  final int result;
+
+  ResultPage({
+    required this.title,
+    required this.length,
+    required this.result,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +36,11 @@ class ResultPage extends StatelessWidget {
                 style: AppTextStyles.body,
                 children: [
                   TextSpan(
-                    text: "\nGerenciamento de Estado",
+                    text: "\n$title",
                     style: AppTextStyles.bodyBold,
                   ),
                   TextSpan(
-                    text: "\ncom 6 de 10 acertos.",
-                    // style: AppTextStyles.bodyBold,
+                    text: "\ncom $result de $length acertos.",
                   ),
                 ],
               ),
@@ -47,7 +56,11 @@ class ResultPage extends StatelessWidget {
                   NextButton.purple(label: "Compartilhar", onTap: () {}),
                   SizedBox(height: 24),
                   NextButton.transparent(
-                      label: "Voltar ao início", onTap: () {}),
+                    label: "Voltar ao início",
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ],
               ),
             ),
